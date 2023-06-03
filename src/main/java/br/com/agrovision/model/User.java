@@ -13,4 +13,8 @@ public class User {
     private String password;
     private String phoneNumber;
     private String additionalInfo;
+
+    public boolean isValid() {
+        return false;
+    }
 }

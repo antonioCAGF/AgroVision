@@ -21,6 +21,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public User getUserById(Long userId) {
+        return null;
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public boolean isUserValid(Long id) {
+        return false;
+    }
+
     private void validateUser(User user) throws IllegalArgumentException {
         if (user.getFullName() == null || user.getFullName().isEmpty()) {
             throw new IllegalArgumentException("O campo 'full_name' é obrigatório.");
@@ -31,6 +46,7 @@ public class UserServiceImpl implements UserService {
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             throw new IllegalArgumentException("O campo 'password' é obrigatório.");
         }
+        // Adicione as validações necessárias para os demais campos
     }
 
     private void encryptPassword(User user) {
