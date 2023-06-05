@@ -1,9 +1,12 @@
 package br.com.agrovision.service;
 
+import br.com.agrovision.model.Donation;
 import br.com.agrovision.model.User;
 import br.com.agrovision.repository.UserRepository;
 import br.com.agrovision.util.PasswordEncoderUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -60,4 +63,31 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("O e-mail fornecido já está em uso.");
         }
     }
+    @Override
+    public void createDonation(Long userId, Donation donation) {
+        User user = userRepository.findById(userId);
+        if (user != null) {
+            user.getDonations().add(donation);
+            userRepository.saveDonation(userId, donation);
+        } else {
+            throw new IllegalArgumentException("Usuário não encontrado.");
+        }
+    }
+    @Override
+    public void createAdminUser(User user) {
+        user.setAdmin(true);
+        registerUser(user);
+    }
+
+    @Override
+    public List<Donation> listDonationsForAdmin() {
+        List<User> adminUsers = userRepository.findAllAdminUsers();
+        if (!adminUsers.isEmpty()) {
+            User adminUser = adminUsers.get(0);
+            return adminUser.getDonations();
+        } else {
+            throw new IllegalArgumentException("Usuário administrador não encontrado.");
+        }
+    }
+
 }

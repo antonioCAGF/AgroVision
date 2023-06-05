@@ -2,6 +2,10 @@ package br.com.agrovision.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class User {
 
@@ -13,7 +17,11 @@ public class User {
     private String password;
     private String phoneNumber;
     private String additionalInfo;
-
+    private List<Donation> donations;
+    private boolean isAdmin;
+    public User() {
+        this.donations = new ArrayList<>();
+    }
     public boolean isValid() {
         return false;
     }
