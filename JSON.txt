@@ -1,0 +1,34 @@
+POST: http://localhost:8080/insert: CADASTRO DE USUÁRIO COMUM
+
+{
+  "fullName": "John Doe",
+  "address": "123 Main Street",
+  "email": "johndoe@example.com",
+  "password": "secretpassword",
+  "phoneNumber": "123456789",
+  "additionalInfo": ""
+}
+
+POST: http://localhost:8080/insert/admin: CADASTRO DE USUÁRIO ADM
+
+{
+  "fullName": "Nome do Administrador",
+  "address": "Endereço do Administrador",
+  "email": "admin@example.com",
+  "password": "senha123",
+  "phoneNumber": "123456789",
+  "additionalInfo": "Informações adicionais do Administrador",
+  "admin": true
+}
+
+POST: http://localhost:8080/insert/16/donations: REGISTRO DE DOAÇÕES (16 SERIA NA VERDADE USERID DO ADM QUE RECEBERÁ A DOAÇÃO)
+
+{
+  "userId": 16,
+  "donationType": "Alimentos",
+  "donationDescription": "Doação de alimentos não perecíveis",
+  "donationDatetime": "2023-06-03T10:30:00",
+  "donationStatus": "Pendente"
+}
+
+GET: http://localhost:8080/insert/list/donations: RETORNO DE LISTA DE DOAÇÕES
