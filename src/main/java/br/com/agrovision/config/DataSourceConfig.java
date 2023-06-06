@@ -12,7 +12,7 @@ public class DataSourceConfig {
     @Bean
     public DataSource dataSource() {
 
-        // Configuração do bancoa
+        // Configuração do banco
         return DataSourceBuilder
                 .create()
                 .url("jdbc:mysql://localhost:3306/base_agrovision")
